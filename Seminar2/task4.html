@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .question {
+        margin-bottom: 20px;
+      }
+      .options {
+        display: flex;
+        flex-direction: column;
+      }
+      label {
+        cursor: pointer;
+        margin-bottom: 10px;
+      }
+      .result {
+        font-weight: bold;
+      }
+        </style>
+    </head>
+    <body>
+        <div class="question">
+            <p>Вопрос 1: Какой ваш любимый цвет?</p>
+            <div class="options">
+                <label class="lable_one">
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="Синий"
+                        class="one"
+                    >
+                    Синий
+                </label>
+                <label class="lable_one">
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="Зеленый"
+                        class="one"
+                    >
+                    Зеленый
+                </label>
+                <label class="lable_one">
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="Красный"
+                        class="one"
+                    >
+                    Красный
+                </label>
+            </div>
+        </div>
+        <div class="question">
+            <p>Вопрос 2: Какое ваше любимое животное?</p>
+            <div class="options">
+                <label class="lable_two">
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="Собака"
+                        class="two"
+                    >
+                    Собака
+                </label>
+                <label class="lable_two">
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="Кот"
+                        class="two"
+                    >
+                    Кот
+                </label>
+                <label class="lable_two">
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="Попугай"
+                        class="two"
+                    >
+                    Попугай
+                </label>
+            </div>
+        </div>
+        <button id="submit">Завершить опрос</button>
+        <div class="result" style="display: none">
+            <p>Результаты:</p>
+            <p>Вопрос 1:
+                <span id="result-q1"></span>
+            </p>
+            <p>Вопрос 2:
+                <span id="result-q2"></span>
+            </p>
+        </div>
+        <!--  -->
+        <script>
+      const thirst = document.querySelectorAll(".one");
+      const second = document.querySelectorAll(".two");
+
+      const lableOneElem = document.querySelectorAll(".lable_one");
+      const lableTwoElem = document.querySelectorAll(".lable_two");
+
+      const btn = document.getElementById("submit");
+
+      const resultElem = document.querySelector(".result");
+
+      let oneElem = "";
+      let twoElem = "";
+
+      const span1 = document.getElementById("result-q1");
+      const span2 = document.getElementById("result-q2");
+
+      btn.addEventListener("click", () => {
+        for (let index = 0; index < thirst.length; index++) {
+          if (thirst[index].checked) {
+            oneElem = lableOneElem[index].textContent;
+          }
+        }
+        for (let index = 0; index < second.length; index++) {
+          if (second[index].checked) {
+            twoElem = lableTwoElem[index].textContent;
+          }
+        }
+
+        span1.textContent = oneElem;
+        span2.textContent = twoElem;
+        resultElem.style.display = "block";
+      });
+        </script>
+    </body>
+</html>
